@@ -1,0 +1,8 @@
+Path
+- azure.communication.calling.1.0.0-beta.28\runtimes\win10-x86\native
+
+Select platform for plugin
+- WSAPlayer
+
+Platform settings CPU
+- X86
