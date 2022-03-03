@@ -1,21 +1,25 @@
+using AzureCallingSDK.Plugins.WSA;
 
 namespace AzureCallingSDK
 {
     public class AzureCallingUWP : IAzureCalling
     {
+        private AzureCallingUWPPlugin _callingUWPPlugin;
         public void Init(string userToken, string userName)
         {
-            throw new System.NotImplementedException();
+            _callingUWPPlugin ??= new AzureCallingUWPPlugin();
+            
+            _callingUWPPlugin?.Init(userToken,userName);
         }
-
+        
         public void JoinTeamsMeeting(string teamsLik)
         {
-            throw new System.NotImplementedException();
+            _callingUWPPlugin?.JoinAsync(teamsLik);
         }
 
         public void LeaveMeeting()
         {
-            throw new System.NotImplementedException();
+            _callingUWPPlugin?.LeaveMeeting();
         }
     }
 }
