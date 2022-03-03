@@ -4,13 +4,21 @@ namespace AzureCallingSDK
 {
     public class AzureCallingAndroid : IAzureCalling
     {
+        #region private fields
         private AndroidJavaClass _pluginClass;
         private AndroidJavaObject _pluginInstance;
+        #endregion
+
+        #region properties
         private AndroidJavaClass PluginClass => _pluginClass ??= new AndroidJavaClass(PluginName);
         private AndroidJavaObject PluginInstance => _pluginInstance ??= PluginClass.CallStatic<AndroidJavaObject>("getInstance");
-        
+        #endregion
+
+        #region constants
         private const string PluginName = "com.holospaces.azurecommunication.AzureCommunicationPlugin";
-        
+        #endregion
+
+        #region public methods
         public void Init(string userToken, string userName)
         {
             AndroidJavaClass unityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");   
@@ -28,5 +36,26 @@ namespace AzureCallingSDK
         {
             PluginInstance.Call("leaveMeeting");  
         }
+
+        public void Mute()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Unmute()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void StartVideo()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void StopVideo()
+        {
+            throw new System.NotImplementedException();
+        }
+        #endregion
     }
 }
