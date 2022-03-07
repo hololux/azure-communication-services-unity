@@ -28,22 +28,12 @@ namespace AzureCallingSDK
 
         public void Mute()
         {
-            throw new System.NotImplementedException();
+            _callingUWPPlugin?.Mute();
         }
 
         public void Unmute()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void StartVideo()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void StopVideo()
-        {
-            throw new System.NotImplementedException();
+            _callingUWPPlugin?.UnMute();
         }
         #endregion
     }

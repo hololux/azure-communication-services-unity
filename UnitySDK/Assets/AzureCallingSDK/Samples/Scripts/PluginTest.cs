@@ -52,6 +52,20 @@ namespace AzureCallingSDK.Samples
             _azureCalling.LeaveMeeting();  
         }
 
+        public void Mute(bool mute)
+        {
+            Debug.Log(mute);
+            
+            if (mute)
+            {
+                _azureCalling.Mute();
+            }
+            else
+            {
+                _azureCalling.Unmute();
+            }
+        }
+
         #region private methods
         private void Init()
         {

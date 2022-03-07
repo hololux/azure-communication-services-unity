@@ -45,7 +45,21 @@ namespace AzureCallingSDK.Plugins.WSA
             await call.HangUpAsync(new HangUpOptions());
             #endif
         }
-
+        
+        internal void Mute()
+        {
+            #if WINDOWS_UWP
+            call.Mute();
+            #endif
+        }
+        
+        internal void UnMute()
+        {
+            #if WINDOWS_UWP
+            call.Unmute();
+            #endif
+        }
+        
         #if WINDOWS_UWP
         private async Task InitCallAgent(string user_token_, string user_name)
         {

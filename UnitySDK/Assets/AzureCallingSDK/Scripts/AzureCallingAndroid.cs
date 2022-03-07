@@ -46,16 +46,6 @@ namespace AzureCallingSDK
         {
             throw new System.NotImplementedException();
         }
-
-        public void StartVideo()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void StopVideo()
-        {
-            throw new System.NotImplementedException();
-        }
         #endregion
     }
 }

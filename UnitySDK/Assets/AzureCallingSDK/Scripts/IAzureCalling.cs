@@ -7,7 +7,5 @@ namespace AzureCallingSDK
         void LeaveMeeting();
         void Mute();
         void Unmute();
-        void StartVideo();
-        void StopVideo();
     }
 }
