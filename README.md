@@ -36,6 +36,9 @@ After getting the calling inistance, initialize the the instance with user acces
 by calling  _azureCommunication.Init(userToken,userName);
 
 ```
+SerializeField] private string userName;
+[SerializeField] private string userToken;
+
 private void Init()
 {
    if (userToken == null)
@@ -52,6 +55,8 @@ In order to make a group call, call the method _azureCommunication.JoinTeamsMeet
 with valid Team meeting link.
  
 ```
+[SerializeField] private string teamsLink;
+
 public void JoinTeamsMeeting()
 {
     if (teamsLink == null)
