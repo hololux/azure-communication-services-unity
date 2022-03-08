@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999946, b: 0.99999946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 654288534}
   - component: {fileID: 654288535}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: MuteUnmute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +282,7 @@ RectTransform:
   m_GameObject: {fileID: 654288533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.396137, y: 1.396137, z: 1.396137}
   m_Children:
   - {fileID: 1364249246}
   - {fileID: 1676798833}
@@ -291,7 +291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 304, y: 226}
+  m_AnchoredPosition: {x: 332, y: 221}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &654288535
@@ -635,7 +635,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -701,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userName: Guest
-  userToken: eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNCIsIng1dCI6IlJDM0NPdTV6UENIWlVKaVBlclM0SUl4Szh3ZyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOmY3ZWRkNzdhLTg4ZDctNDM1YS04NDkxLTMxMTg4MjAwOGE1MF8wMDAwMDAwZi1mMDk3LWE1ZDctMzRmYS1hZDNhMGQwMDc0ZTIiLCJzY3AiOjE3OTIsImNzaSI6IjE2NDYzMjY1NzkiLCJleHAiOjE2NDY0MTI5NzksImFjc1Njb3BlIjoidm9pcCIsInJlc291cmNlSWQiOiJmN2VkZDc3YS04OGQ3LTQzNWEtODQ5MS0zMTE4ODIwMDhhNTAiLCJpYXQiOjE2NDYzMjY1Nzl9.SmZCLvpmGqjREsbyqfDlmki5XmBtkOV7KwOEa_zxAry-fC-yXM8rpkmWU1wb7hQs0PZOP3fqP8_L5xcGmg3BJTzH8a0nW1JZBDyCE2Rv10ywIJlE5gIrZ3DmvLcGyn5aV4pgwptndppC0J71ymrD_hp5Rsaug92lpaxGZECVv1atOIN7hLJ16xgPM5Y2tofP9poHy9GGO03YkVgYsLoMEuy-GAJPpSqfvWZq34r0_Mx1LnQEaN2wAIlkkgiSuz4SZETob7S53afS5N1tPMOojnVyqne3lwdOZ3Du8Pp1z7sm-DvjNvF-CmiGTHOh7Er6UmtRYJJGJfCPMLxR-RTjjw
+  userToken: eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNCIsIng1dCI6IlJDM0NPdTV6UENIWlVKaVBlclM0SUl4Szh3ZyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOmY3ZWRkNzdhLTg4ZDctNDM1YS04NDkxLTMxMTg4MjAwOGE1MF8wMDAwMDAxMC0wOGVmLWUxYzEtMzRmYS1hZDNhMGQwMDlhZjUiLCJzY3AiOjE3OTIsImNzaSI6IjE2NDY3MzUwMTUiLCJleHAiOjE2NDY4MjE0MTUsImFjc1Njb3BlIjoidm9pcCIsInJlc291cmNlSWQiOiJmN2VkZDc3YS04OGQ3LTQzNWEtODQ5MS0zMTE4ODIwMDhhNTAiLCJpYXQiOjE2NDY3MzUwMTV9.Iy8RbYxhWfHQcXTNLDPV7f7EQ8TJgXp_5kGzcxl2_V1i3Q2j7sR5XTIrQN4veSGXIFm-eqLagzsB2243bWRXD5A8ZlxZ5lFGz_dtfx2MPZKPp-mJ55wLIcUwKuHA9ihQ8rUsFY_92fkXW0cZOGNkNRh55ifZC9GdWZDCAUyeSdJTD-yDZbWeJUygX-q_3RMNedQmRYtFVgG9Q2AYGk3W3BUsqY91FPsHmOo57Cn9gEeEzhKctRdckzE9qp0JdsPhbuopnYLmu-8pEiTYvG_x8CAmO7JZYA1fTmD5icAlE7fp52mAE5vnwRpHWXwtQnuSVAEuGiKez8dFroxgLTaWKw
   teamsLink: https://teams.microsoft.com/l/meetup-join/19:meeting_ZTUxZmJmOWYtOTM4NS00ZDgyLTljNGItYjE2OTdlYmY1YjY3@thread.v2/0?context=%7B%22Tid%22:%22ca396e7b-57d6-4fc3-a3df-80b9e5542817%22,%22Oid%22:%22934b09eb-391c-4cee-a55a-0cd832640a20%22%7D
 --- !u!1 &1364249245
 GameObject:
@@ -730,7 +729,7 @@ RectTransform:
   m_GameObject: {fileID: 1364249245}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2898, y: 1.2898, z: 1.2898}
   m_Children:
   - {fileID: 1072566718}
   m_Father: {fileID: 654288534}
