@@ -1,6 +1,6 @@
 {
     "name": "Acs",
-    "rootNamespace": "",
+    "rootNamespace": "Hololux.Acs",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
