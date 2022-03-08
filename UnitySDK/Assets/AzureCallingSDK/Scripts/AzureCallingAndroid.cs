@@ -39,12 +39,12 @@ namespace AzureCallingSDK
 
         public void Mute()
         {
-            throw new System.NotImplementedException();
+            PluginInstance.Call("mute");  
         }
 
         public void Unmute()
         {
-            throw new System.NotImplementedException();
+            PluginInstance.Call("unMute");
         }
         #endregion
     }

@@ -72,6 +72,16 @@ public class AzureCommunicationPlugin
         }
     }
 
+    public void mute()
+    {
+        call.mute(getApplicationContext());
+    }
+
+    public void unMute()
+    {
+        call.unmute(getApplicationContext());
+    }
+
     private void createAgent(String userToken)
     {
         try
