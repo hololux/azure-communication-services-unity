@@ -48,9 +48,8 @@ task copyPlugin(type: Copy)
 {
       dependsOn assemble
       from('build/outputs/aar')
-      into('../../output/plugins')
+      into('../../../UnitySDK/Assets/AzureCallingSDK/Plugins/Android/libs')
       include(project.name +'-release.aar')
-
 
     // please only re-enable this to export dependencies
     /*
