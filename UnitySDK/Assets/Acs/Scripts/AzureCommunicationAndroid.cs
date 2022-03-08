@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace AzureCallingSDK
+namespace Hololux.Acs
 {
-    public class AzureCallingAndroid : IAzureCalling
+    public class AzureCommunicationAndroid : IAzureCommunication
     {
         #region private fields
         private AndroidJavaClass _pluginClass;

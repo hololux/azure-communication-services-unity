@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace AzureCallingSDK.Plugins.WSA
+namespace Hololux.Acs.Plugins.WSA
 {
-    internal class AzureCallingUWPPlugin 
+    internal class AzureCommunicationUWPPlugin 
     {
         #if WINDOWS_UWP
         private CallClient _callClient;

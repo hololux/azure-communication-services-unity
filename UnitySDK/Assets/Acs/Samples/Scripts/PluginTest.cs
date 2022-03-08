@@ -1,8 +1,7 @@
-using AzureCallingSDK;
 using UnityEngine;
 using UnityEngine.Android;
 
-namespace AzureCallingSDK.Samples
+namespace Hololux.Acs.Samples
 {
     public class PluginTest : MonoBehaviour
     {
@@ -13,7 +12,7 @@ namespace AzureCallingSDK.Samples
         #endregion
 
         #region private feilds
-        private IAzureCalling _azureCalling;
+        private IAzureCommunication _azureCommunication;
         #endregion
 
         #region unity methods
@@ -26,7 +25,7 @@ namespace AzureCallingSDK.Samples
             }
             #endif
 
-            _azureCalling = AzureCallingFactory.GetCallingInstance();
+            _azureCommunication = AcsFactory.GetCommunicationInstance();
             Init();
         }
         
@@ -44,12 +43,12 @@ namespace AzureCallingSDK.Samples
                 return;
             }
         
-            _azureCalling.JoinTeamsMeeting(teamsLink);
+            _azureCommunication.JoinTeamsMeeting(teamsLink);
         }
 
         public void LeaveMeeting()
         {
-            _azureCalling.LeaveMeeting();  
+            _azureCommunication.LeaveMeeting();  
         }
 
         public void Mute(bool mute)
@@ -58,11 +57,11 @@ namespace AzureCallingSDK.Samples
             
             if (mute)
             {
-                _azureCalling.Mute();
+                _azureCommunication.Mute();
             }
             else
             {
-                _azureCalling.Unmute();
+                _azureCommunication.Unmute();
             }
         }
 
@@ -75,7 +74,7 @@ namespace AzureCallingSDK.Samples
                 return;
             }
 
-            _azureCalling.Init(userToken,userName);
+            _azureCommunication.Init(userToken,userName);
         }
         #endregion
     }

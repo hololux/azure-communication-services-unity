@@ -1,6 +1,6 @@
-namespace AzureCallingSDK
+namespace Hololux.Acs
 {
-    public interface IAzureCalling
+    public interface IAzureCommunication
     { 
         void Init(string userToken, string userName);
         void JoinTeamsMeeting(string teamsLik);
