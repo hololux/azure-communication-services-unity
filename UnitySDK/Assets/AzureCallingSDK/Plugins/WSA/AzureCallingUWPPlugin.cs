@@ -12,17 +12,17 @@ namespace AzureCallingSDK.Plugins.WSA
     internal class AzureCallingUWPPlugin 
     {
         #if WINDOWS_UWP
-        private CallClient callClient;
-        private CallAgent callAgent;
-        private Call call;
-        private DeviceManager deviceManager;
-        private LocalVideoStream[] localVideoStream;
+        private CallClient _callClient;
+        private CallAgent _callAgent;
+        private Call _call;
+        private DeviceManager _deviceManager;
+        private LocalVideoStream[] _localVideoStream;
         #endif
 
-        internal async Task Init(string token, string user)
+        internal async Task Init(string token, string userName)
         {
             #if WINDOWS_UWP
-            await InitCallAgent(token, user);
+            await InitCallAgent(token, userName);
             #endif
         }
         
@@ -32,62 +32,63 @@ namespace AzureCallingSDK.Plugins.WSA
             GetCameraDevice();
 
             JoinCallOptions joinCallOptions = new JoinCallOptions();
-            joinCallOptions.VideoOptions = new VideoOptions(localVideoStream);
+            joinCallOptions.VideoOptions = new VideoOptions(_localVideoStream);
 
             var teamsMeetingLinkLocator = new TeamsMeetingLinkLocator(teamsMeetingUrl);
-            call = await callAgent.JoinAsync(teamsMeetingLinkLocator, joinCallOptions);
+            _call = await _callAgent.JoinAsync(teamsMeetingLinkLocator, joinCallOptions);
             #endif
         }
         
         internal async Task LeaveMeeting()
         {
             #if WINDOWS_UWP
-            await call.HangUpAsync(new HangUpOptions());
+            await _call.HangUpAsync(new HangUpOptions());
             #endif
         }
         
-        internal void Mute()
+        internal async void Mute()
         {
             #if WINDOWS_UWP
-            call.Mute();
+            await _call.Mute();
             #endif
         }
         
-        internal void UnMute()
+        internal async void UnMute()
         {
             #if WINDOWS_UWP
-            call.Unmute();
+            await _call.Unmute();
             #endif
         }
         
         #if WINDOWS_UWP
-        private async Task InitCallAgent(string user_token_, string user_name)
+        private async Task InitCallAgent(string userToken, string userName)
         {
-            var token_credential = new Azure.WinRT.Communication.CommunicationTokenCredential(user_token_);
+            var tokenCredential = new Azure.WinRT.Communication.CommunicationTokenCredential(userToken);
 
-            callClient = new CallClient();
-            deviceManager = await callClient.GetDeviceManager();
-            localVideoStream = new LocalVideoStream[1];
+            _callClient = new CallClient();
+            _deviceManager = await _callClient.GetDeviceManager();
+            _localVideoStream = new LocalVideoStream[1];
 
             var callAgentOptions = new CallAgentOptions()
             {
-                DisplayName = user_name
+                DisplayName = userName
             };
-            callAgent = await callClient.CreateCallAgent(token_credential, callAgentOptions);
-            callAgent.OnCallsUpdated += CallAgent_OnCallsUpdated;
-            callAgent.OnIncomingCall += CallAgent_OnIncomingCall;
+            
+            _callAgent = await _callClient.CreateCallAgent(tokenCredential, callAgentOptions);
+            _callAgent.OnCallsUpdated += OnCallAgentCallsUpdated;
+            _callAgent.OnIncomingCall += OnCallAgentIncomingCall;
         }
 
-        private async void CallAgent_OnIncomingCall(object sender, IncomingCall incomingCall)
+        private async void OnCallAgentIncomingCall(object sender, IncomingCall incomingCall)
         {
             GetCameraDevice();
 
             AcceptCallOptions acceptCallOptions = new AcceptCallOptions();
-            acceptCallOptions.VideoOptions = new VideoOptions(localVideoStream);
-            call = await incomingCall.AcceptAsync(acceptCallOptions);
+            acceptCallOptions.VideoOptions = new VideoOptions(_localVideoStream);
+            _call = await incomingCall.AcceptAsync(acceptCallOptions);
         }
 
-        private async void CallAgent_OnCallsUpdated(object sender, CallsUpdatedEventArgs args)
+        private async void OnCallAgentCallsUpdated(object sender, CallsUpdatedEventArgs args)
         {
             foreach (var call in args.AddedCalls)
             {
@@ -132,11 +133,11 @@ namespace AzureCallingSDK.Plugins.WSA
 
         private async void GetCameraDevice()
         {
-            if (deviceManager.Cameras.Count > 0)
+            if (_deviceManager.Cameras.Count > 0)
             {
-                var videoDeviceInfo = deviceManager.Cameras[0];
-                localVideoStream[0] = new LocalVideoStream(videoDeviceInfo);
-                var localUri = await localVideoStream[0].CreateBindingAsync();
+                var videoDeviceInfo = _deviceManager.Cameras[0];
+                _localVideoStream[0] = new LocalVideoStream(videoDeviceInfo);
+                var localUri = await _localVideoStream[0].CreateBindingAsync();
             }
         }
         #endif
