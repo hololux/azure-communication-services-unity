@@ -36,7 +36,7 @@ After getting the calling inistance, initialize the the instance with user acces
 by calling  _azureCommunication.Init(userToken,userName);
 
 ```
-SerializeField] private string userName;
+[SerializeField] private string userName;
 [SerializeField] private string userToken;
 
 private void Init()
