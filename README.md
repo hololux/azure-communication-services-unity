@@ -7,7 +7,7 @@ Supported Platforms: Android, UWP
 Minimum Unity Version: 2020.3.20f1(not tested on lower versions)
 
 
-# Usage
+## usage
 
 Please download the latest release from 
 https://github.com/hololux/azure-communication-services-unity/releases
