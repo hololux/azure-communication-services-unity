@@ -87,7 +87,7 @@ public void LeaveMeeting()
  
  ### Android
  
- following persmitions need to be included inside the android manifest
+ Following persmitions need to be included inside the android manifest. Currenly it is included in the plugins manifest file.
  ```
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -97,7 +97,7 @@ public void LeaveMeeting()
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
  ```
- Also, you need to include the following line. Currenly it is included in the plugins manifest file. 
+ Also, you need to include the following line. 
  
  ```
  <uses-library android:name="org.apache.http.legacy" android:required="false"/>
