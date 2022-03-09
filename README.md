@@ -7,7 +7,7 @@ Supported Platforms: Android, UWP
 Minimum Unity Version: 2020.3.20f1(not tested on lower versions)
 
 
-## usage
+## Usage
 
 Please download the latest release from 
 https://github.com/hololux/azure-communication-services-unity/releases
@@ -83,7 +83,7 @@ public void LeaveMeeting()
   _azureCommunication.LeaveMeeting();  
 }
  ```
- ## permissions
+ ## Permissions
  
  ### Android
  
@@ -106,7 +106,7 @@ public void LeaveMeeting()
  Please refer this page for more details
  https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/voice-video-calling/getting-started-with-calling?pivots=platform-android
  
-  ### uwp
+  ### Uwp
   
   Please enable the following capabilities in the player settings
   
