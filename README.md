@@ -115,6 +115,10 @@ public void LeaveMeeting()
  
   https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/voice-video-calling/getting-started-with-calling?pivots=platform-windows
  
- 
+  ## Samples
+  Package contains sample scene called PluginSample.unity(\Acs\Samples\PluginSample). Please use this for checking the functinalities.
+  Assign userToken and teamsLink to the PluginTest.cs script in the scene.
+  
+
  
  
