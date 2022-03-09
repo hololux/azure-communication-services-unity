@@ -35,6 +35,12 @@ private void Start()
 After getting the calling inistance, initialize the the instance with user acces token
 by calling  _azureCommunication.Init(userToken,userName);
 
+To generate userToken quickly, please use azure communication resource.
+https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/identity/quick-create-identity
+
+Alternatively you can achieve this using 'CommunicationIdentityClient' to generate token from the code
+https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp
+
 ```
 [SerializeField] private string userName;
 [SerializeField] private string userToken;
