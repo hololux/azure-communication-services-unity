@@ -83,4 +83,38 @@ public void LeaveMeeting()
   _azureCommunication.LeaveMeeting();  
 }
  ```
+ ## permissions
+ 
+ ### Android
+ 
+ following persmitions need to be included inside the android manifest
+ ```
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+ ```
+ Also, you need to include the following line. Currenly it is included in the plugins manifest file. 
+ 
+ ```
+ <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+ 
+ ```
+ Please refer this page for more details
+ https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/voice-video-calling/getting-started-with-calling?pivots=platform-android
+ 
+  ### uwp
+  
+  Please enable the following capabilities in the player settings
+  
+  1. Internet (Client & Server) 
+  2. Microphone
+ 
+ 
+ 
+ 
+ 
  
