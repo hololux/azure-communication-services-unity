@@ -24,7 +24,7 @@ namespace Hololux.Acs
             AndroidJavaClass unityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");   
             AndroidJavaObject unityActivity = unityClass.GetStatic<AndroidJavaObject>("currentActivity"); 
             
-            PluginInstance.Call("init", unityActivity,userToken);   
+            PluginInstance.Call("init", unityActivity,userToken,userName);   
         }
         
         public void JoinTeamsMeeting(string teamsLik)

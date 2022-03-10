@@ -31,10 +31,10 @@ public class AzureCommunicationPlugin
         return Instance;
     }
 
-    public void init(Activity unityActivity, String userTokenToken)
+    public void init(Activity unityActivity, String userTokenToken, String userName)
     {
         activity = unityActivity;
-        createAgent(userTokenToken);
+        createAgent(userTokenToken,userName);
     }
 
     public void joinTeamsMeeting(String meetingLink)
@@ -82,7 +82,7 @@ public class AzureCommunicationPlugin
         call.unmute(getApplicationContext());
     }
 
-    private void createAgent(String userToken)
+    private void createAgent(String userToken, String userName)
     {
         try
         {
