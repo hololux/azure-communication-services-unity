@@ -56,8 +56,9 @@ private void Init()
     _azureCommunication.Init(userToken,userName);
 }
  ```
- 
-In order to make a group call, call the method _azureCommunication.JoinTeamsMeeting(teamsLink)
+
+#### Teams calling
+In order to make a Teams call, call the method _azureCommunication.JoinTeamsMeeting(teamsLink)
 with valid Team meeting link.
  
 ```
@@ -72,6 +73,25 @@ public void JoinTeamsMeeting()
     }  
     
   _azureCommunication.JoinTeamsMeeting(teamsLink);         
+}
+ ```
+ 
+#### Group calling
+In order to make a group call, call the method _azureCommunication.JoinGroupCall(groupGuid)
+with a GUID. 
+ 
+```
+[SerializeField] private string groupGuid;
+
+public void JoinGroupCall()
+{
+    if (groupGuid == null)
+    {
+      Debug.LogError("groupGuid is null, please assign one");
+      return;
+    }  
+    
+  _azureCommunication.JoinGroupCall(groupGuid);         
 }
  ```
  
@@ -115,9 +135,22 @@ public void LeaveMeeting()
  
   https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/voice-video-calling/getting-started-with-calling?pivots=platform-windows
  
+  ## Buiding Project
+  
+  ### Android
+  
+  Android manifest must be linked in the player settings and chosse IL2CPP(ARM64) as scripring background.
+  
+  ### Uwp
+  
+  Build the project as VisualStudio project, and for HoloLens choose ARM64 architecture. For standalone UWP app, please choose x64.
+   
   ## Samples
-  Package contains sample scene called PluginSample.unity(\Acs\Samples\PluginSample). Please use this for checking the functinalities.
-  Assign userToken and teamsLink to the PluginTest.cs script in the scene.
+  Package contains sample scenes under Assets\Acs\Samples folder. Please use this for checking the functinalities.
+  
+  
+ 
+   
   
 
  
