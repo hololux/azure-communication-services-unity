@@ -1,10 +1,11 @@
 #if WINDOWS_UWP
 using Azure.Communication;
 using Azure.Communication.Calling;
-using System;
-using System.Collections.Generic;
 #endif
+
+using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Hololux.Acs.Plugins.WSA
@@ -26,7 +27,7 @@ namespace Hololux.Acs.Plugins.WSA
             #endif
         }
         
-        internal async Task JoinAsync(string teamsMeetingUrl)
+        internal async Task JoinTeamsCallAsync(string teamsMeetingUrl)
         {
             #if WINDOWS_UWP
             GetCameraDevice();
@@ -36,6 +37,21 @@ namespace Hololux.Acs.Plugins.WSA
 
             var teamsMeetingLinkLocator = new TeamsMeetingLinkLocator(teamsMeetingUrl);
             _call = await _callAgent.JoinAsync(teamsMeetingLinkLocator, joinCallOptions);
+            #endif
+        }
+        
+        internal async Task JoinGroupCallAsync(string groupGuid)
+        {
+            Guid groupId = Guid.Parse(groupGuid);
+            
+            #if WINDOWS_UWP
+            GetCameraDevice();
+
+            JoinCallOptions joinCallOptions = new JoinCallOptions();
+            joinCallOptions.VideoOptions = new VideoOptions(_localVideoStream);
+
+             var groupCallLocator = new GroupCallLocator(groupId);
+            _call = await _callAgent.JoinAsync(groupCallLocator, joinCallOptions);
             #endif
         }
         
@@ -97,12 +113,13 @@ namespace Hololux.Acs.Plugins.WSA
                     await AddVideoStreams(remoteParticipant.VideoStreams);
                     remoteParticipant.OnVideoStreamsUpdated += async (s, a) => await AddVideoStreams(a.AddedRemoteVideoStreams);
                 }
-                call.OnRemoteParticipantsUpdated += Call_OnRemoteParticipantsUpdated; ;
-                call.OnStateChanged += Call_OnStateChanged;
+
+                call.OnRemoteParticipantsUpdated += OnCallRemoteParticipantsUpdated;
+                call.OnStateChanged += OnCallStateChanged;
             }
         }
 
-        private async void Call_OnStateChanged(object sender, PropertyChangedEventArgs args)
+        private async void OnCallStateChanged(object sender, PropertyChangedEventArgs args)
         {
             switch (((Call)sender).State)
             {
@@ -113,7 +130,7 @@ namespace Hololux.Acs.Plugins.WSA
             }
         }
 
-        private async void Call_OnRemoteParticipantsUpdated(object sender, ParticipantsUpdatedEventArgs args)
+        private async void OnCallRemoteParticipantsUpdated(object sender, ParticipantsUpdatedEventArgs args)
         {
             foreach (var remoteParticipant in args.AddedParticipants)
             {

@@ -155,7 +155,7 @@ RectTransform:
   m_Children:
   - {fileID: 1402883390}
   m_Father: {fileID: 1921341016}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -207,8 +207,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1222624972}
-        m_TargetAssemblyTypeName: PluginTest, Assembly-CSharp
-        m_MethodName: JoinTeamsMeeting
+        m_TargetAssemblyTypeName: Hololux.Acs.Samples.TeamsCallingSample, Acs
+        m_MethodName: JoinCall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -287,7 +287,7 @@ RectTransform:
   - {fileID: 1364249246}
   - {fileID: 1676798833}
   m_Father: {fileID: 1921341016}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -447,6 +447,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &777557094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777557095}
+  - component: {fileID: 777557097}
+  - component: {fileID: 777557096}
+  m_Layer: 5
+  m_Name: Title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &777557095
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777557094}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1921341016}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.000030517578, y: -36.19998}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &777557096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777557094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 16
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 58
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Teams Calling Sample
+--- !u!222 &777557097
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777557094}
+  m_CullTransparentMesh: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +697,7 @@ GameObject:
   - component: {fileID: 1222624969}
   - component: {fileID: 1222624972}
   m_Layer: 0
-  m_Name: PluginTest
+  m_Name: TeamsCalling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -699,9 +778,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597d264d76d30074b9d63164f06e80f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userName: Guest
-  userToken: 
-  teamsLink: 
+  userName: GuestUser
+  userToken: eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNCIsIng1dCI6IlJDM0NPdTV6UENIWlVKaVBlclM0SUl4Szh3ZyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOjk0MDFiZDlkLTgzMmItNDA2NC05ZTRlLTM3NTk5OWQ5OTNmMF8wMDAwMDAxMC0xMzA3LTc1MjktZjVmNC1hZDNhMGQwMGFlYWQiLCJzY3AiOjE3OTIsImNzaSI6IjE2NDY5MDQzMzIiLCJleHAiOjE2NDY5OTA3MzIsImFjc1Njb3BlIjoidm9pcCIsInJlc291cmNlSWQiOiI5NDAxYmQ5ZC04MzJiLTQwNjQtOWU0ZS0zNzU5OTlkOTkzZjAiLCJpYXQiOjE2NDY5MDQzMzJ9.a2AqNzj8p2voFbNCDaCFjstw4mWfoUpO0ac_7zpiDNtzgo3XWIFYIXlNz-Y5qOgMBjl7Z9Zk-5SB0bI3pRMiBs9Qjmw4Trblhb2lzJAjVqBB9ZzGXHlP2GbYjX47x0GI7iApOJoF_8aLOTPE05PFLquEv0OZ8C4brLBllKB8K7H452qK4CP5Kzu6sR4-QszVI_EdK0GjbnBRi0pG6dkl_8TK1NdURvIoQSZAms1rF4Rg0MTXuO_3-ubcoIi6Kf_GPQKKV5t4AHD7RqRnegpdwQ7bMORUckhCZWK7Ucloznz5EgffaXTToWJo6SrR7kgvvfKw_d0upZOn7dhIm47RfQ
+  teamsLink: https://teams.microsoft.com/l/meetup-join/19:meeting_ZTUxZmJmOWYtOTM4NS00ZDgyLTljNGItYjE2OTdlYmY1YjY3@thread.v2/0?context=%7B%22Tid%22:%22ca396e7b-57d6-4fc3-a3df-80b9e5542817%22,%22Oid%22:%22934b09eb-391c-4cee-a55a-0cd832640a20%22%7D
 --- !u!1 &1364249245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1255,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 777557095}
   - {fileID: 374588537}
   - {fileID: 1971966307}
   - {fileID: 654288534}
@@ -1219,7 +1299,7 @@ RectTransform:
   m_Children:
   - {fileID: 1627456338}
   m_Father: {fileID: 1921341016}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}

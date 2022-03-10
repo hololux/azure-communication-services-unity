@@ -3,16 +3,15 @@ using UnityEngine.Android;
 
 namespace Hololux.Acs.Samples
 {
-    public class PluginTest : MonoBehaviour
+    public abstract class AzureCommunicationSample : MonoBehaviour
     {
         #region serialized feilds
         [SerializeField] private string userName;
         [SerializeField] private string userToken;
-        [SerializeField] private string teamsLink;
         #endregion
 
         #region private feilds
-        private IAzureCommunication _azureCommunication;
+        protected IAzureCommunication AzureCommunication;
         #endregion
 
         #region unity methods
@@ -25,30 +24,20 @@ namespace Hololux.Acs.Samples
             }
             #endif
 
-            _azureCommunication = AcsFactory.GetCommunicationInstance();
+            AzureCommunication = AcsFactory.GetCommunicationInstance();
             Init();
         }
         
-        void Update()
+        private void Update()
         {
             transform.Rotate(10.0f *Time.deltaTime, 10.0f*Time.deltaTime, -7.0f*Time.deltaTime);
         }
         #endregion
-    
-        public void JoinTeamsMeeting()
-        {
-            if (teamsLink == null)
-            {
-                Debug.LogError("teamsLink is null, please assign one");
-                return;
-            }
-        
-            _azureCommunication.JoinTeamsMeeting(teamsLink);
-        }
 
+        #region public methods
         public void LeaveMeeting()
         {
-            _azureCommunication.LeaveMeeting();  
+            AzureCommunication.LeaveMeeting();  
         }
 
         public void Mute(bool mute)
@@ -57,13 +46,14 @@ namespace Hololux.Acs.Samples
             
             if (mute)
             {
-                _azureCommunication.Mute();
+                AzureCommunication.Mute();
             }
             else
             {
-                _azureCommunication.Unmute();
+                AzureCommunication.Unmute();
             }
         }
+        #endregion
 
         #region private methods
         private void Init()
@@ -74,7 +64,7 @@ namespace Hololux.Acs.Samples
                 return;
             }
 
-            _azureCommunication.Init(userToken,userName);
+            AzureCommunication.Init(userToken,userName);
         }
         #endregion
     }

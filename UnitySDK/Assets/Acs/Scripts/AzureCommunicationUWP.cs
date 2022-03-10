@@ -18,7 +18,12 @@ namespace Hololux.Acs
         
         public void JoinTeamsMeeting(string teamsLik)
         {
-            _communicationUWPPlugin?.JoinAsync(teamsLik);
+            _communicationUWPPlugin?.JoinTeamsCallAsync(teamsLik);
+        }
+
+        public void JoinGroupCall(string groupGuid)
+        {
+            _communicationUWPPlugin?.JoinGroupCallAsync(groupGuid);
         }
 
         public void LeaveMeeting()

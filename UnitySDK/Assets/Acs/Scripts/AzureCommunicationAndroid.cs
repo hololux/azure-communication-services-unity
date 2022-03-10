@@ -24,14 +24,19 @@ namespace Hololux.Acs
             AndroidJavaClass unityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");   
             AndroidJavaObject unityActivity = unityClass.GetStatic<AndroidJavaObject>("currentActivity"); 
             
-            PluginInstance.Call("init", unityActivity, userToken);   
+            PluginInstance.Call("init", unityActivity,userToken);   
         }
         
         public void JoinTeamsMeeting(string teamsLik)
         {
             PluginInstance.Call("joinTeamsMeeting",teamsLik); 
         }
-    
+
+        public void JoinGroupCall(string groupGuid)
+        {
+            PluginInstance.Call("joinGroupCall",groupGuid); 
+        }
+
         public void LeaveMeeting()
         {
             PluginInstance.Call("leaveMeeting");  

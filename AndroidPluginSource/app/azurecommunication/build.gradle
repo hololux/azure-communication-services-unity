@@ -40,6 +40,7 @@ dependencies {
 
     // please only enable this if you want to export dependencies of
     // following package
+
     implementation 'com.azure.android:azure-communication-calling:1.2.0-beta.2'
 
 }
@@ -48,7 +49,7 @@ task copyPlugin(type: Copy)
 {
       dependsOn assemble
       from('build/outputs/aar')
-      into('../../../UnitySDK/Assets/AzureCallingSDK/Plugins/Android/libs')
+      into('../../../UnitySDK/Assets/Acs/Plugins/Android/libs')
       include(project.name +'-release.aar')
 
     // please only re-enable this to export dependencies
