@@ -1932,8 +1932,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222624966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.748}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0.288, y: 0.24, z: 0.91269}
+  m_LocalScale: {x: 0.055545814, y: 0.055545814, z: 0.055545814}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1951,8 +1951,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userName: GuestUser
-  userToken: eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNCIsIng1dCI6IlJDM0NPdTV6UENIWlVKaVBlclM0SUl4Szh3ZyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOjk0MDFiZDlkLTgzMmItNDA2NC05ZTRlLTM3NTk5OWQ5OTNmMF8wMDAwMDAxMC0zMjNiLTBhZDktODc0YS1hZDNhMGQwMDhlYWMiLCJzY3AiOjE3OTIsImNzaSI6IjE2NDc0Mjc4MDYiLCJleHAiOjE2NDc1MTQyMDYsImFjc1Njb3BlIjoidm9pcCIsInJlc291cmNlSWQiOiI5NDAxYmQ5ZC04MzJiLTQwNjQtOWU0ZS0zNzU5OTlkOTkzZjAiLCJpYXQiOjE2NDc0Mjc4MDZ9.uR8kC3bkcpBWbZ5kZpT5wO_OH6wHBxnR2C0_M4xOkzH1TOeNzvIPc6HRQxeSj4LSXXkIINQz7vZSOGvgwlIo8oc81Gvq-tg_ZakOzr_t5R0LHRlyprnPi9n9n9EI9C8cKIxveqAVE6MmtQHYtkER1aoIdd9XKMB1pYs3tCVpuGRB4V1opDxww8_vpNdrOtx4i9tg_3Xnl3Jr6eH9ogIvoX_EqRlZuyHu4YZiMAC6moa2yCrI8QyuBXEiNrfAKMe3TMVYXfOHGr-QFIOCgkJAOQ9oOQVZ1i4OYETB7gKMtk7a9TNj83b2GywmapoR0liLpEftTMtCiTbj1XeavnpkyA
-  teamsLink: https://teams.microsoft.com/l/meetup-join/19:meeting_ZTUxZmJmOWYtOTM4NS00ZDgyLTljNGItYjE2OTdlYmY1YjY3@thread.v2/0?context=%7B%22Tid%22:%22ca396e7b-57d6-4fc3-a3df-80b9e5542817%22,%22Oid%22:%22934b09eb-391c-4cee-a55a-0cd832640a20%22%7D
+  userToken: 
+  teamsLink: 
 --- !u!114 &1222624973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4200,7 +4200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2759939694042924796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.721, y: 0.222, z: 0.91269}
+  m_LocalPosition: {x: 0, y: 0.222, z: 0.91269}
   m_LocalScale: {x: 2.387, y: 2.387, z: 2.387}
   m_Children:
   - {fileID: 7225909857545717290}
