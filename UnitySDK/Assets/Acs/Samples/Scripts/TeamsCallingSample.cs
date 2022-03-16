@@ -11,12 +11,15 @@ namespace Hololux.Acs.Samples
         #region public methods
         public void JoinCall()
         {
+            if (InCall) return;
+            
             if (string.IsNullOrEmpty(teamsLink))
             {
                 Debug.LogError("teamsLink is IsNullOrEmpty ");
                 return;
             }
-        
+
+            InCall = true;
             AzureCommunication.JoinTeamsMeeting(teamsLink);
         }
         #endregion
