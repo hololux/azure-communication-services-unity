@@ -6593,8 +6593,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4650336335241583058}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.01}
-  m_LocalScale: {x: 0.042212024, y: 0.096, z: 0.02}
+  m_LocalPosition: {x: 0, y: 0.00017, z: 0.01}
+  m_LocalScale: {x: 0.042212024, y: 0.10630585, z: 0.02}
   m_Children: []
   m_Father: {fileID: 4650336336310266274}
   m_RootOrder: 0
@@ -7027,7 +7027,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4650336334727288575}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0327, z: 0}
+  m_LocalPosition: {x: 0, y: -0.034, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4650336335367486853}
@@ -7375,7 +7375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4650336334813755613}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.031999998, z: 0}
+  m_LocalPosition: {x: 0, y: 0.034, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4650336335247365031}
@@ -8014,7 +8014,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf12ee76e7e00a44a9a84256760020e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeList: []
+  nodeList:
+  - Name: Call_Button
+    Offset: {x: 0, y: 0}
+    Radius: 0
+    Transform: {fileID: 4650336336440622652}
+    Colliders: []
+  - Name: MuteToggleButton
+    Offset: {x: 0, y: 0}
+    Radius: 0
+    Transform: {fileID: 1923059767}
+    Colliders: []
+  - Name: HangUp_Button
+    Offset: {x: 0, y: 0}
+    Radius: 0
+    Transform: {fileID: 4650336336321646622}
+    Colliders: []
   ignoreInactiveTransforms: 1
   sortType: 0
   surfaceType: 1
@@ -8028,9 +8043,9 @@ MonoBehaviour:
   radialRange: 180
   distance: 0
   rows: 3
-  columns: 3
+  columns: 1
   cellWidth: 0.032
-  cellHeight: 0.032
+  cellHeight: 0.034
   assetVersion: 1
 --- !u!33 &6158203878929505397
 MeshFilter:

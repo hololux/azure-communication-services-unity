@@ -11,12 +11,15 @@ namespace Hololux.Acs.Samples
         #region public methods
         public void JoinCall()
         { 
+            if (InCall) return;
+            
             if (string.IsNullOrEmpty(groupGuid))
             {
                 Debug.LogError("groupGuid is IsNullOrEmpty, please assign one");
                 return;
             }
             
+            InCall = true;
             AzureCommunication.JoinGroupCall(groupGuid);
         }
         #endregion

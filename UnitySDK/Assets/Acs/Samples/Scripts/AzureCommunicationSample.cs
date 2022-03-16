@@ -12,6 +12,7 @@ namespace Hololux.Acs.Samples
 
         #region private feilds
         protected IAzureCommunication AzureCommunication;
+        protected bool InCall;
         #endregion
 
         #region unity methods
@@ -37,7 +38,10 @@ namespace Hololux.Acs.Samples
         #region public methods
         public void LeaveMeeting()
         {
-            AzureCommunication.LeaveMeeting();  
+            if (!InCall) return;
+            
+            InCall = false;
+            AzureCommunication.LeaveMeeting();
         }
 
         public void Mute(bool mute)
