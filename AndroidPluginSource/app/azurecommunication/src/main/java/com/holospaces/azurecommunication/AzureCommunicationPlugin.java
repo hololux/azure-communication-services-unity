@@ -6,11 +6,13 @@ import android.app.Activity;
 import com.azure.android.communication.calling.Call;
 import com.azure.android.communication.calling.CallAgent;
 import com.azure.android.communication.calling.CallClient;
+import com.azure.android.communication.calling.GroupCallLocator;
 import com.azure.android.communication.calling.HangUpOptions;
 import com.azure.android.communication.calling.JoinCallOptions;
 import com.azure.android.communication.common.CommunicationTokenCredential;
 import com.azure.android.communication.calling.TeamsMeetingLinkLocator;
 
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class AzureCommunicationPlugin
@@ -53,10 +55,35 @@ public class AzureCommunicationPlugin
             Log.i(LOGTAG, "agent is null");
         }
 
-        Log.i(LOGTAG, "agent join");
+        Log.i(LOGTAG, "agent joinTeamsMeeting");
         call = agent.join(
                 getApplicationContext(),
                 teamsMeetingLinkLocator,
+                options);
+    }
+
+    public void joinGroupCall(String groupGuid)
+    {
+        if (groupGuid.isEmpty())
+        {
+            Log.i(LOGTAG, "Please enter group Guid");
+            return;
+        }
+
+        UUID uuid = UUID.fromString(groupGuid);
+
+        JoinCallOptions options = new JoinCallOptions();
+        GroupCallLocator groupCallLocator = new GroupCallLocator(uuid);
+
+        if(agent == null)
+        {
+            Log.i(LOGTAG, "agent is null");
+        }
+
+        Log.i(LOGTAG, "agent joinGroupCall");
+        call = agent.join(
+                getApplicationContext(),
+                groupCallLocator,
                 options);
     }
 
