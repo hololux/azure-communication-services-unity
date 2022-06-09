@@ -1,3 +1,5 @@
+using System;
+
 namespace Hololux.Acs
 {
     public interface IAzureCommunication
@@ -8,5 +10,6 @@ namespace Hololux.Acs
         void LeaveMeeting();
         void Mute();
         void Unmute();
+        void SendFrame(byte[] frameData);
     }
 }

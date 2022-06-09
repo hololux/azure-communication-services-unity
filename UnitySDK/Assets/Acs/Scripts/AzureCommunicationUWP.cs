@@ -40,6 +40,11 @@ namespace Hololux.Acs
         {
             _communicationUWPPlugin?.UnMute();
         }
+
+        public void SendFrame(byte[] frameData)
+        {
+            throw new System.NotImplementedException();
+        }
         #endregion
     }
 }

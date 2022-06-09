@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Hololux.Acs
@@ -7,11 +8,13 @@ namespace Hololux.Acs
         #region private fields
         private AndroidJavaClass _pluginClass;
         private AndroidJavaObject _pluginInstance;
+        private IntPtr _sendFrameMethodPtr;
+        private IntPtr _pluginInstancePtr;
         #endregion
 
         #region properties
         private AndroidJavaClass PluginClass => _pluginClass ??= new AndroidJavaClass(PluginName);
-        private AndroidJavaObject PluginInstance => _pluginInstance ??= PluginClass.CallStatic<AndroidJavaObject>("getInstance");
+        private AndroidJavaObject PluginInstance; // => _pluginInstance ??= PluginClass.CallStatic<AndroidJavaObject>("getInstance");
         #endregion
 
         #region constants
@@ -22,9 +25,10 @@ namespace Hololux.Acs
         public void Init(string userToken, string userName)
         {
             AndroidJavaClass unityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");   
-            AndroidJavaObject unityActivity = unityClass.GetStatic<AndroidJavaObject>("currentActivity"); 
-            
-            PluginInstance.Call("init", unityActivity,userToken,userName);   
+            AndroidJavaObject unityActivity = unityClass.GetStatic<AndroidJavaObject>("currentActivity");
+
+            PluginInstance = new AndroidJavaObject(PluginName);
+            PluginInstance.Call("init", unityActivity,userToken,userName);
         }
         
         public void JoinTeamsMeeting(string teamsLik)
@@ -50,6 +54,13 @@ namespace Hololux.Acs
         public void Unmute()
         {
             PluginInstance.Call("unMute");
+        }
+
+        public void SendFrame(byte[] frameData)
+        {
+            sbyte[] signedFrameData = new sbyte[frameData.Length]; // android byte[] is signed 
+            Buffer.BlockCopy( frameData, 0, signedFrameData, 0, frameData.Length );
+            PluginInstance.Call("sendFrame", signedFrameData);
         }
         #endregion
     }

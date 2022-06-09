@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
 
@@ -18,10 +19,20 @@ namespace Hololux.Acs.Samples
         private void Start()
         {
             #if PLATFORM_ANDROID
+
+            List<string> permissions = new List<string>();
+            
             if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
             {
-                Permission.RequestUserPermission(Permission.Microphone);
+                permissions.Add(Permission.Microphone);
             }
+            
+            if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+            {
+                permissions.Add(Permission.Camera);
+            }
+            
+            Permission.RequestUserPermissions(permissions.ToArray());
             #endif
 
             AzureCommunication = AcsFactory.GetCommunicationInstance();

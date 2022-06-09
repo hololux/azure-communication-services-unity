@@ -4,9 +4,13 @@ namespace Hololux.Acs
 {
     public static class AcsFactory
     {
+
+        private static IAzureCommunication _azureCommunication;
         #region public methods
         public static IAzureCommunication GetCommunicationInstance()
         {
+            if (_azureCommunication != null) return _azureCommunication;
+            
             IAzureCommunication communicationInstance = Application.platform switch
             {
                 RuntimePlatform.Android => new AzureCommunicationAndroid(),
@@ -16,6 +20,7 @@ namespace Hololux.Acs
                 _ => null
             };
 
+            _azureCommunication = communicationInstance;
             return communicationInstance;
         }
         #endregion
