@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.holospaces.com.hololux.azurecommunication", appContext.getPackageName());
+        assertEquals("com.holospaces.azurecommunication", appContext.getPackageName());
     }
 }

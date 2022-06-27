@@ -31,7 +31,6 @@ android {
 
 dependencies {
 
-
     implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
@@ -42,7 +41,7 @@ dependencies {
     // please only enable this if you want to export dependencies of
     // following package
 
-    implementation 'com.azure.android:azure-communication-calling:1.3.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.2.0-beta.2'
 
 }
 
@@ -55,12 +54,10 @@ task copyPlugin(type: Copy)
 
     // please only re-enable this to export dependencies
     /*
-         configurations.implementation.setCanBeResolved(true)
-         configurations.api.setCanBeResolved(true)
-         from configurations.implementation
-         into('../../output/libs')
-
-     */
-
-     }
+      configurations.implementation.setCanBeResolved(true)
+      configurations.api.setCanBeResolved(true)
+      from configurations.implementation
+      into('../../output/libs')
+      */
+  }
 
