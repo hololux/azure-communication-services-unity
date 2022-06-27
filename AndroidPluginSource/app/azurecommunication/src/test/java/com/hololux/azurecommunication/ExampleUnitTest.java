@@ -1,4 +1,4 @@
-package com.holospaces.azurecommunication;
+package com.hololux.azurecommunication;
 
 import org.junit.Test;
 

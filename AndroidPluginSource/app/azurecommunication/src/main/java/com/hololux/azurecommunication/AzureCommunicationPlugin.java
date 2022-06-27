@@ -1,4 +1,4 @@
-package com.holospaces.azurecommunication;
+package com.hololux.azurecommunication;
 import android.content.Context;
 import android.util.Log;
 import android.app.Activity;

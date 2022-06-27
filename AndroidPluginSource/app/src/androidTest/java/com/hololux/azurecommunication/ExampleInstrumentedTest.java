@@ -1,4 +1,4 @@
-package com.holospaces.azurecommunication;
+package com.hololux.azurecommunication;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.holospaces.azurecommunication.test", appContext.getPackageName());
+        assertEquals("com.holospaces.azurecommunication", appContext.getPackageName());
     }
 }
