@@ -4,8 +4,8 @@ namespace Hololux.Acs
 {
     public static class AcsFactory
     {
-
         private static IAzureCommunication _azureCommunication;
+        
         #region public methods
         public static IAzureCommunication GetCommunicationInstance()
         {

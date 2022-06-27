@@ -18,7 +18,7 @@ namespace Hololux.Acs
         #endregion
 
         #region constants
-        private const string PluginName = "com.holospaces.azurecommunication.AzureCommunicationPlugin";
+        private const string PluginName = "com.hololux.azurecommunication.AzureCommunicationPlugin";
         #endregion
 
         #region public methods
