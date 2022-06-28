@@ -41,7 +41,7 @@ dependencies {
     // please only enable this if you want to export dependencies of
     // following package
 
-    implementation 'com.azure.android:azure-communication-calling:1.3.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:2.0.0-beta.1'
 }
 
 task copyPlugin(type: Copy)

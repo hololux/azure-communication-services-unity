@@ -11,6 +11,7 @@ import android.util.Log;
 import android.app.Activity;
 import com.azure.android.communication.calling.Call;
 import com.azure.android.communication.calling.CallAgent;
+import com.azure.android.communication.calling.CallAgentOptions;
 import com.azure.android.communication.calling.CallClient;
 import com.azure.android.communication.calling.DeviceManager;
 import com.azure.android.communication.calling.FrameConfirmation;
@@ -131,9 +132,15 @@ public class AzureCommunicationPlugin
     {
         try
         {
-            CommunicationTokenCredential credential = new CommunicationTokenCredential(userToken);
-            callAgent = new CallClient().createCallAgent(getApplicationContext(), credential).get();
+            // fix for link error CallAgentOptions callAgentOptions status is not found
+            // this loads the native library :)
+            CallClient nativeLibraryLoaded = new CallClient();
 
+            CommunicationTokenCredential credential = new CommunicationTokenCredential(userToken);
+            CallAgentOptions callAgentOptions = new CallAgentOptions();
+            callAgentOptions.setDisplayName(userName);
+
+            callAgent = new CallClient().createCallAgent(getApplicationContext(), credential, callAgentOptions).get();
             deviceManager = new CallClient().getDeviceManager(getApplicationContext()).get();
         }
         catch (Exception ex)
