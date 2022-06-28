@@ -1,4 +1,3 @@
-using System;
 
 namespace Hololux.Acs
 {
@@ -7,7 +6,7 @@ namespace Hololux.Acs
         void Init(string userToken, string userName);
         void JoinTeamsMeeting(string teamsLik);
         void JoinGroupCall(string groupGuid);
-        void LeaveMeeting();
+        void LeaveCall();
         void Mute();
         void Unmute();
         void SendFrame(byte[] frameData);

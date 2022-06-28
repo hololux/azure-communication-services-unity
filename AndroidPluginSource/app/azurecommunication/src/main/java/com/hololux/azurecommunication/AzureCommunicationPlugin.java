@@ -1,5 +1,11 @@
 package com.hololux.azurecommunication;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.ArrayList;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
+
 import android.content.Context;
 import android.util.Log;
 import android.app.Activity;
@@ -17,7 +23,6 @@ import com.azure.android.communication.calling.VideoDeviceInfo;
 import com.azure.android.communication.calling.VideoFormat;
 import com.azure.android.communication.common.CommunicationTokenCredential;
 import com.azure.android.communication.calling.TeamsMeetingLinkLocator;
-
 import com.azure.android.communication.calling.MediaFrameKind;
 import com.azure.android.communication.calling.PixelFormat;
 import com.azure.android.communication.calling.VideoOptions;
@@ -26,13 +31,6 @@ import com.azure.android.communication.calling.MediaFrameSender;
 import com.azure.android.communication.calling.OutboundVirtualVideoDevice;
 import com.azure.android.communication.calling.OutboundVirtualVideoDeviceOptions;
 import com.azure.android.communication.calling.VirtualDeviceRunningState;
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 
 public class AzureCommunicationPlugin
 {
@@ -49,7 +47,7 @@ public class AzureCommunicationPlugin
     private byte[] currentBuffer = null;
     private boolean newFrameArrived;
     private java.nio.ByteBuffer plane1 = null;
-    private static final String LOGTAG = "Unity";
+    private static final String LogTag = "Unity";
 
     public AzureCommunicationPlugin(){}
 
@@ -63,7 +61,7 @@ public class AzureCommunicationPlugin
     {
         if (meetingLink.isEmpty())
         {
-            Log.i(LOGTAG, "Please enter Teams meeting link");
+            Log.i(LogTag, "Please enter Teams meeting link");
             return;
         }
 
@@ -77,17 +75,11 @@ public class AzureCommunicationPlugin
         }
     }
 
-    public void sendFrame(byte[] input)
-    {
-        currentBuffer = input;
-        newFrameArrived = true;
-    }
-
     public void joinGroupCall(String groupGuid)
     {
         if (groupGuid.isEmpty())
         {
-            Log.i(LOGTAG, "Please enter group Guid");
+            Log.i(LogTag, "Please enter group Guid");
             return;
         }
 
@@ -97,17 +89,17 @@ public class AzureCommunicationPlugin
 
         if(callAgent == null)
         {
-            Log.i(LOGTAG, "agent is null");
+            Log.i(LogTag, "agent is null");
         }
 
-        Log.i(LOGTAG, "agent joinGroupCall");
+        Log.i(LogTag, "agent joinGroupCall");
         call = callAgent.join(
                 getApplicationContext(),
                 groupCallLocator,
                 options);
     }
 
-    public void leaveMeeting()
+    public void leaveCall()
     {
         try
         {
@@ -115,8 +107,14 @@ public class AzureCommunicationPlugin
         }
         catch (Exception e)
         {
-            Log.e(LOGTAG, "error leaving meeting");
+            Log.e(LogTag, "error leaving meeting");
         }
+    }
+
+    public void sendFrame(byte[] input)
+    {
+        currentBuffer = input;
+        newFrameArrived = true;
     }
 
     public void mute()
@@ -140,74 +138,51 @@ public class AzureCommunicationPlugin
         }
         catch (Exception ex)
         {
-            Log.i(LOGTAG, "Failed to create call agent.");
+            Log.i(LogTag, "Failed to create call agent.");
         }
     }
 
     private void startCall(String meetingLink) throws Exception
     {
-        // See section on starting the call
-        createOutboundVirtualVideoDevice();
+        if(call != null)
+        {
+            joinTeamsCallInternal(meetingLink);
+            return;
+        }
 
+        createOutboundVirtualVideoDevice();
         frameSenderThread = new Thread(new Runnable()
         {
             @Override
             public void run()
             {
                 try {
-                    java.nio.ByteBuffer plane1 = null;
-                    Random rand = new Random();
+                    java.nio.ByteBuffer sendBuffer = null;
 
                     while (outboundVirtualVideoDevice != null)
                     {
                         while (mediaFrameSender != null)
                         {
-                            if (mediaFrameSender.getMediaFrameKind() == MediaFrameKind.VIDEO_SOFTWARE && newFrameArrived)
-                            {
+                            if (mediaFrameSender.getMediaFrameKind() == MediaFrameKind.VIDEO_SOFTWARE && newFrameArrived) {
                                 SoftwareBasedVideoFrame sender = (SoftwareBasedVideoFrame) mediaFrameSender;
                                 VideoFormat videoFormat = sender.getVideoFormat();
 
-                                // Gets the timestamp for when the video frame has been created.
-                                // This allows better synchronization with audio.
                                 int timeStamp = sender.getTimestamp();
 
-                                // Adjusts frame dimensions to the video format that network conditions can manage.
-                                if (plane1 == null || videoFormat.getStride1() * videoFormat.getHeight() != plane1.capacity()) {
-                                    plane1 = ByteBuffer.allocateDirect(videoFormat.getStride1() * videoFormat.getHeight());
-                                    plane1.order(ByteOrder.nativeOrder());
+                                if (sendBuffer == null || videoFormat.getStride1() * videoFormat.getHeight() != sendBuffer.capacity()) {
+                                    sendBuffer = ByteBuffer.allocateDirect(videoFormat.getStride1() * videoFormat.getHeight());
+                                    sendBuffer.order(ByteOrder.nativeOrder());
                                 }
 
-                                plane1.put(currentBuffer);
-
-/*
-                                // Generates random gray scaled bands as video frame.
-                                int bandsCount = rand.nextInt(15) + 1;
-                                int bandBegin = 0;
-                                int bandThickness = videoFormat.getHeight() * videoFormat.getStride1() / bandsCount;
-
-                                for (int i = 0; i < bandsCount; ++i) {
-                                    byte greyValue = (byte) rand.nextInt(254);
-                                    java.util.Arrays.fill(plane1.array(), bandBegin, bandBegin + bandThickness, greyValue);
-                                    bandBegin += bandThickness;
-                                }
-
- */
+                                sendBuffer.put(currentBuffer);
 
                                 // Sends video frame to the other participants in the call.
-                                FrameConfirmation fr = sender.sendFrame(plane1, timeStamp).get();
-                                plane1.clear();
+                                FrameConfirmation fr = sender.sendFrame(sendBuffer, timeStamp).get();
+                                sendBuffer.clear();
 
                                 newFrameArrived = false;
-                                // Waits before generating the next video frame.
-                                // Video format defines how many frames per second app must generate.
-                                //Thread.sleep((long) (1000.0f / videoFormat.getFramesPerSecond()));
                             }
                         }
-
-                        // Virtual camera hasn't been created yet.
-                        // Let's wait a little bit before checking again.
-                        // This is for demo only purpose.
-                        // Please use a better synchronization mechanism.
                     }
                 } catch (InterruptedException e)
                 {
@@ -220,53 +195,35 @@ public class AzureCommunicationPlugin
         });
 
         frameSenderThread.start();
-        JoinCallOptions joinCallOptions = new JoinCallOptions();
-        try
+
+        while (virtualVideoStream == null)
         {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+           ensureLocalVideoStreamWithVirtualCamera();
         }
 
-        ensureLocalVideoStreamWithVirtualCamera();
-
-        joinCallOptions.setVideoOptions(new VideoOptions(new LocalVideoStream[]{
-                virtualVideoStream
-        }));
-
-        TeamsMeetingLinkLocator teamsMeetingLinkLocator = new TeamsMeetingLinkLocator(meetingLink);
-
-        callAgent.join(
-                getApplicationContext(),
-                teamsMeetingLinkLocator,
-                joinCallOptions);
+        joinTeamsCallInternal(meetingLink);
     }
 
-    private void InitCall(String meetingLink) throws Exception
+    private void joinTeamsCallInternal(String meetingLink)
     {
-        createOutboundVirtualVideoDevice();
         JoinCallOptions joinCallOptions = new JoinCallOptions();
-
-        ensureLocalVideoStreamWithVirtualCamera();
-
         joinCallOptions.setVideoOptions(new VideoOptions(new LocalVideoStream[]{
                 virtualVideoStream
         }));
 
         TeamsMeetingLinkLocator teamsMeetingLinkLocator = new TeamsMeetingLinkLocator(meetingLink);
 
-        callAgent.join(
+        call = callAgent.join(
                 getApplicationContext(),
                 teamsMeetingLinkLocator,
                 joinCallOptions);
-
     }
 
     private void createOutboundVirtualVideoDevice() throws Exception
     {
         VirtualDeviceIdentification deviceId = new VirtualDeviceIdentification();
-        deviceId.setId("QuickStartVirtualVideoDevice");
-        deviceId.setName("My First Virtual Video Device");
+        deviceId.setId("VirtualDevice");
+        deviceId.setName("Virtual Video Device");
 
         ArrayList<VideoFormat> videoFormats = new ArrayList<VideoFormat>();
 
@@ -299,10 +256,17 @@ public class AzureCommunicationPlugin
 
     private void ensureLocalVideoStreamWithVirtualCamera()
     {
+        /*
+         This can be used to get the front cam if it is supported
+         List<VideoDeviceInfo> videoDeviceInfo =  deviceManager.getCameras();
+         VideoDeviceInfo frontCam = videoDeviceInfo.get(0);
+         */
+
         for (VideoDeviceInfo videoDeviceInfo : deviceManager.getCameras())
         {
             String deviceId = videoDeviceInfo.getId();
-            if (deviceId.equalsIgnoreCase("QuickStartVirtualVideoDevice"))
+
+            if (deviceId.equalsIgnoreCase("VirtualDevice"))
             {
                 virtualVideoStream = new LocalVideoStream(videoDeviceInfo, getApplicationContext());
             }
@@ -313,7 +277,7 @@ public class AzureCommunicationPlugin
     {
         if(activity == null)
         {
-            Log.i(LOGTAG, "activity is null");
+            Log.i(LogTag, "activity is null");
             return null;
         }
 

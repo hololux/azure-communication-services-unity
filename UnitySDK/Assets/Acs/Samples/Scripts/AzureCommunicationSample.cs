@@ -48,7 +48,7 @@ namespace Hololux.Acs.Samples
         #region public methods
         public void LeaveMeeting()
         {
-            AzureCommunication.LeaveMeeting();  
+            AzureCommunication.LeaveCall();  
         }
 
         public void Mute(bool mute)

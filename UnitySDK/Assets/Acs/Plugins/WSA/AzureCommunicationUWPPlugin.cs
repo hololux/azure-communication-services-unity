@@ -152,7 +152,7 @@ namespace Hololux.Acs.Plugins.WSA
         {
             if (_deviceManager.Cameras.Count > 0)
             {
-                var videoDeviceInfo = _deviceManager.Cameras[0];
+                var videoDeviceInfo = _deviceManager.0[0];
                 _localVideoStream[0] = new LocalVideoStream(videoDeviceInfo);
                 var localUri = await _localVideoStream[0].CreateBindingAsync();
             }

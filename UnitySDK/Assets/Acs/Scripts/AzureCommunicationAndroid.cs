@@ -41,9 +41,9 @@ namespace Hololux.Acs
             PluginInstance.Call("joinGroupCall",groupGuid); 
         }
 
-        public void LeaveMeeting()
+        public void LeaveCall()
         {
-            PluginInstance.Call("leaveMeeting");  
+            PluginInstance.Call("leaveCall");  
         }
 
         public void Mute()

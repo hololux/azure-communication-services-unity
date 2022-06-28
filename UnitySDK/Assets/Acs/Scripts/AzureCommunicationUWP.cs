@@ -26,7 +26,7 @@ namespace Hololux.Acs
             _communicationUWPPlugin?.JoinGroupCallAsync(groupGuid);
         }
 
-        public void LeaveMeeting()
+        public void LeaveCall()
         {
             _communicationUWPPlugin?.LeaveMeeting();
         }
@@ -43,6 +43,7 @@ namespace Hololux.Acs
 
         public void SendFrame(byte[] frameData)
         {
+            // HoloLens uses mixed reality capture data by default
             throw new System.NotImplementedException();
         }
         #endregion
