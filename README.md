@@ -45,12 +45,6 @@ https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/access
 
 private void Init()
 {
-   if (userToken == null)
-   {
-      Debug.LogError("User token is null, please assign one");
-      return;
-   }
-
     _azureCommunication.Init(userToken,userName);
 }
  ```
@@ -64,12 +58,6 @@ with valid Team meeting link.
 
 public void JoinTeamsMeeting()
 {
-    if (teamsLink == null)
-    {
-      Debug.LogError("teamsLink is null, please assign one");
-      return;
-    }  
-    
   _azureCommunication.JoinTeamsMeeting(teamsLink);         
 }
  ```
@@ -82,13 +70,7 @@ with a GUID.
 [SerializeField] private string groupGuid;
 
 public void JoinGroupCall()
-{
-    if (groupGuid == null)
-    {
-      Debug.LogError("groupGuid is null, please assign one");
-      return;
-    }  
-    
+{ 
   _azureCommunication.JoinGroupCall(groupGuid);         
 }
  ```
@@ -103,7 +85,7 @@ public void LeaveCall()
  ```
  
 #### Sending video frames on Android devices
-By defualt HoloLens sends mixed reality capture frames, for android you have to manualy send the frames.
+By default HoloLens sends mixed reality capture frames, for android you have to manualy send the frames.
 
 To send video frames from android devices, call the method _azureCommunication.SendFrame(byetes[] bytes). 
 Please have look into AcsAndroidFrameSender.cs implementations.
