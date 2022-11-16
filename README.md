@@ -4,6 +4,8 @@ Unity Plug-in for Azure Communication Services (ACS)
 
 Supported Platforms: Android, UWP
 
+Not supported on Editor
+
 Minimum Unity Version: 2020.3.20f1(not tested on lower versions)
 
 
@@ -21,14 +23,10 @@ private IAzureCommunication _azureCommunication;
 private void Start()
 {
     #if PLATFORM_ANDROID
-    if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
-    {
-        Permission.RequestUserPermission(Permission.Microphone);
-    }
+    Permission.RequestUserPermissions({Permission.Microphone,Permission.Camera});
     #endif
-
-    _azureCommunication = AcsFactory.GetCommunicationInstance();
-    Init();                 
+    
+    _azureCommunication = AcsFactory.GetCommunicationInstance();         
 }
 ```
 
@@ -47,12 +45,6 @@ https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/access
 
 private void Init()
 {
-   if (userToken == null)
-   {
-      Debug.LogError("User token is null, please assign one");
-      return;
-   }
-
     _azureCommunication.Init(userToken,userName);
 }
  ```
@@ -66,12 +58,6 @@ with valid Team meeting link.
 
 public void JoinTeamsMeeting()
 {
-    if (teamsLink == null)
-    {
-      Debug.LogError("teamsLink is null, please assign one");
-      return;
-    }  
-    
   _azureCommunication.JoinTeamsMeeting(teamsLink);         
 }
  ```
@@ -84,25 +70,30 @@ with a GUID.
 [SerializeField] private string groupGuid;
 
 public void JoinGroupCall()
-{
-    if (groupGuid == null)
-    {
-      Debug.LogError("groupGuid is null, please assign one");
-      return;
-    }  
-    
+{ 
   _azureCommunication.JoinGroupCall(groupGuid);         
 }
  ```
  
-To leave the call, call the method _azureCommunication.LeaveMeeting()
+To leave the call, call the method _azureCommunication.LeaveCall()
  
 ```
-public void LeaveMeeting()
+public void LeaveCall()
 {
-  _azureCommunication.LeaveMeeting();  
+  _azureCommunication.LeaveCall();  
 }
  ```
+ 
+#### Sending video frames on Android devices
+By default HoloLens sends mixed reality capture frames, for android you have to manualy send the frames.
+
+To send video frames from android devices, call the method _azureCommunication.SendFrame(byetes[] bytes). 
+Please have look into AcsAndroidFrameSender.cs implementations.
+
+ ```
+_azureCommunication.SendFrame(imageBytes);
+ ```
+ 
  ## Permissions
  
  ### Android

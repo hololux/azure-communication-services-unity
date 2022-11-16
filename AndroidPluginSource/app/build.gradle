@@ -6,7 +6,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.holospaces.azurecommunication"
+        applicationId "com.hololux.azurecommunication"
         minSdk 21
         targetSdk 32
         versionCode 1

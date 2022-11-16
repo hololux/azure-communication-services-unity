@@ -18,7 +18,7 @@ namespace Hololux.Acs
         #endregion
 
         #region constants
-        private const string PluginName = "com.holospaces.azurecommunication.AzureCommunicationPlugin";
+        private const string PluginName = "com.hololux.azurecommunication.AzureCommunicationPlugin";
         #endregion
 
         #region public methods
@@ -41,9 +41,9 @@ namespace Hololux.Acs
             PluginInstance.Call("joinGroupCall",groupGuid); 
         }
 
-        public void LeaveMeeting()
+        public void LeaveCall()
         {
-            PluginInstance.Call("leaveMeeting");  
+            PluginInstance.Call("leaveCall");  
         }
 
         public void Mute()

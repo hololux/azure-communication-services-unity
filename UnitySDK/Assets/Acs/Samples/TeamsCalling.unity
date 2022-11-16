@@ -123,78 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &133850513
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 133850514}
-  - component: {fileID: 133850516}
-  - component: {fileID: 133850515}
-  m_Layer: 5
-  m_Name: RawImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &133850514
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133850513}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1921341016}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 278, y: 104}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &133850515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133850513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &133850516
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133850513}
-  m_CullTransparentMesh: 1
 --- !u!1 &374588536
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,49 +447,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &773497205
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 773497207}
-  - component: {fileID: 773497206}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &773497206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773497205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e18efc211e47e5409f38a1eb6dd6b31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &773497207
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773497205}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 331.73074, y: 248.4932, z: -3.9651568}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &777557094
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +539,7 @@ GameObject:
   - component: {fileID: 811904625}
   - component: {fileID: 811904624}
   m_Layer: 5
-  m_Name: HanupButton (1)
+  m_Name: SendVideoFrames(AndroidOnly)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -725,8 +610,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1447439982}
-        m_TargetAssemblyTypeName: HoloSpaces.FrameSender, Assembly-CSharp
-        m_MethodName: SendCurrentCameraFrame
+        m_TargetAssemblyTypeName: Hololux.Acs.AcsAndroidFrameSender, Acs
+        m_MethodName: StartSendingFrames
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1002,7 +887,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start sending Frames
+  m_Text: Start sending Frames*
 --- !u!222 &1198932298
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1106,7 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userName: GuestUser
-  userToken: eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNCIsIng1dCI6IlJDM0NPdTV6UENIWlVKaVBlclM0SUl4Szh3ZyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOmY3ZWRkNzdhLTg4ZDctNDM1YS04NDkxLTMxMTg4MjAwOGE1MF8wMDAwMDAxMS1iOTg2LTE1NzYtNjVmMC1hZDNhMGQwMDhlMzEiLCJzY3AiOjE3OTIsImNzaSI6IjE2NTM5OTI2MTYiLCJleHAiOjE2NTQwNzkwMTYsImFjc1Njb3BlIjoidm9pcCIsInJlc291cmNlSWQiOiJmN2VkZDc3YS04OGQ3LTQzNWEtODQ5MS0zMTE4ODIwMDhhNTAiLCJpYXQiOjE2NTM5OTI2MTZ9.l8S0RqdwobszslpFpw4MVALtjnE2qJgRwGMMZLz0hmFHV1jbUmMmOCx19M8vdG3tk99DTLEnfRUKcQktZXjhH_RNB6jEvWgQrosH11lA6wysgovWqFeqIg5f-EQvooLY1bfJHWzMl9GTbiB3LhdksML1TuAWPq_3bTNPbtBisMqX6Qq3D77hTAEEJc9WAzBIrESikQrBnHwMCDiHc_DBImg9z83T8VyMHospvdPuIJXIE0FSpjGqAWaQteNm4NbI23jXaCl1h4Xzl7_lu5tpCv4auO68obS7JJaIGpbdgtwrWUJUEmTdWeHGqSE5n_WQp_2P9kxUsmELbVAgP8FPIw
+  userToken: eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNiIsIng1dCI6Im9QMWFxQnlfR3hZU3pSaXhuQ25zdE5PU2p2cyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOmI1NWE1MTFlLTBiMjgtNDU4YS05OTk2LTk5NDkxYzBmY2UyZV8wMDAwMDAxMi00YTYzLTVjZjktNWI0Mi1hZDNhMGQwMDE2ZTAiLCJzY3AiOjE3OTIsImNzaSI6IjE2NTY0MjMwMzciLCJleHAiOjE2NTY1MDk0MzcsImFjc1Njb3BlIjoidm9pcCIsInJlc291cmNlSWQiOiJiNTVhNTExZS0wYjI4LTQ1OGEtOTk5Ni05OTQ5MWMwZmNlMmUiLCJpYXQiOjE2NTY0MjMwMzd9.S7qBg9p7vCIZSOWDC49xL5E7Yqb8-PBLG5pOoHv36UqJ4zJ4ZdzNKrD4x-cWQjGv84cAnJWzIQ-1fQ-uK4bIGZYOpe_EsBzexE_GSvz8ENTrmqQRS49LEFBWNlTS29cnyWMD5YT_ws1ndCvfJSYyhCkls4w3vfhqDTSOCneRrdyL6vlqfPdCEXceHYoE975crQSlp9no6giERWvtVLLzReO2QLRHiK2fpfGdrjlicuNMUO6mfQIzam9leWC9m6H0lImyJjEmxCQtQAK3CcVF-zPq6rdrSeaNhQqNlIeDj1haK47Mq98SblL2Eczi2JjFBwT-4hakaWgLgAR6aqFrBw
   teamsLink: https://teams.microsoft.com/l/meetup-join/19%3ameeting_YjgxNTZjNGItZGRjMy00ZGQzLWFiZTYtYzU2Y2UwZTI5NDBi%40thread.v2/0?context=%7b%22Tid%22%3a%22ca396e7b-57d6-4fc3-a3df-80b9e5542817%22%2c%22Oid%22%3a%2215f5f602-ce38-4a1c-b558-f21dabcc0d64%22%7d
 --- !u!1 &1364249245
 GameObject:
@@ -1276,7 +1161,7 @@ GameObject:
   - component: {fileID: 1447439983}
   - component: {fileID: 1447439982}
   m_Layer: 0
-  m_Name: RenderCamers
+  m_Name: FrameSender(Android)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1299,7 +1184,7 @@ MonoBehaviour:
   antiAliasingCount: 2
   autoGenerateMips: 1
   targetRenderCamera: {fileID: 1564616565}
-  targetRawImage: {fileID: 133850515}
+  frameSenderButton: {fileID: 811904624}
 --- !u!4 &1447439983
 Transform:
   m_ObjectHideFlags: 0
@@ -1313,7 +1198,7 @@ Transform:
   m_Children:
   - {fileID: 1564616566}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1528570799
 GameObject:
@@ -1711,7 +1596,6 @@ RectTransform:
   - {fileID: 1971966307}
   - {fileID: 654288534}
   - {fileID: 811904623}
-  - {fileID: 133850514}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
